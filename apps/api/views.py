@@ -58,7 +58,7 @@ class PublicBusinessDetail(generics.RetrieveAPIView):
 
     def get_queryset(self):
         queryset = Business.objects.all().filter(is_public=True)
-        return  queryset
+        return queryset
 
     serializer_class = BusinessSerializer
 
@@ -72,8 +72,8 @@ class ReviewViewSet(viewsets.ModelViewSet):
 
     serializer_class = ReviewSerializer
 
-    def create(self, request):
-        return super().create(request)
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
 
     def destroy(self, request, *args, **kwargs):
         review = Review.objects.get(pk=self.kwargs["pk"])
@@ -89,7 +89,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
             )
 
     def perform_create(self, serializer):
-        serializer.save(owner=serializer.request.user)
+        serializer.save(owner=self.request.user)
 
 
 class PublicReviews(generics.ListAPIView):
