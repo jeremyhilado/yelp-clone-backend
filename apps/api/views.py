@@ -38,6 +38,7 @@ class BusinessViewSet(viewsets.ModelViewSet):
             raise PermissionDenied(
                 "You do not have permission to edit this business"
             )
+        return super().update(request, *args, **kwargs)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -87,6 +88,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
             raise PermissionDenied(
                 "You do not have permission to edit this review"
             )
+        return super().update(request, *args, **kwargs)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
