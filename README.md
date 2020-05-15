@@ -132,7 +132,9 @@ npm i axios bootstrap cors react-bootstrap react-router
 
 ## Code Snippet
 
-I'm sharing the particular code snippent below because I thought it was a pretty clever way of getting the business id to the handle function so it can be stored in state. I set the value prop of the submit button to {business[0].id} so that when it was clicked it would get sent to the handleChange function and get stored into state.
+I'm sharing the particular code snippent below because I thought it was a pretty clever way of getting the business id to be stored in state. I set the value prop of the submit button to {business[0].id} so that when it was clicked it would get sent to the handleChange function and get stored into state.
+
+I needed to do this because when editing a review, we need to send the database generated business ID back to the backend along with the user info for the edits to be accepted. 
 
 ```
 <button type="submit" className="btn btn-info" name="business" value={business[0].id} onClick={rundownContext.handleReviewChange}>Post Review</button>
@@ -140,6 +142,7 @@ I'm sharing the particular code snippent below because I thought it was a pretty
 ```
 
 ## Issues and Resolutions
+
 Spent too much time trying to replicate yelp's API exactly in Python and trying to match all the nesting and depths of data. I don't believe I had the proper understanding of how Django models work in Python so I just tried to apply what we were showed in class to accomplish that. I tried researching if there were other ways to go about it but I felt I was wasting time given the limited amount of time we had. Things got so convoluted I had to undo it all and settle for two simple models that were easy to work with.
 
 Could not figure out how to deploy backend with DEBUG=FALSE.
