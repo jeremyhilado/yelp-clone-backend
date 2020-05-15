@@ -105,16 +105,16 @@ MVP
 
 ## Technologies Used
 
-Backend: Python, Django, PostgreSQL
+Backend: Python, Django, PostgreSQL  
 
-Frontend: ReactJS, NodeJS
+Frontend: ReactJS, NodeJS  
 
 ## Additional Libraries
 
-axios
-bootstrap
-react-bootstrap
-react-router-dom
+axios  
+bootstrap  
+react-bootstrap  
+react-router-dom  
 
 ## Dependencies Installation
 
