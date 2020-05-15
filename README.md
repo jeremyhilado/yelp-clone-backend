@@ -126,7 +126,7 @@ npm i axios bootstrap cors react-bootstrap react-router
 ![Log In](https://res.cloudinary.com/do6tcpizk/image/upload/v1589497473/GA%20Project%204%20Capstone%20Yelp%20Clone/Screenshots/therundown.netlify.app__2_e0fffp.png)
 ![Dashboard](https://res.cloudinary.com/do6tcpizk/image/upload/v1589497473/GA%20Project%204%20Capstone%20Yelp%20Clone/Screenshots/therundown.netlify.app__3_xjr5my.png)
 ![Business Page](https://res.cloudinary.com/do6tcpizk/image/upload/v1589497473/GA%20Project%204%20Capstone%20Yelp%20Clone/Screenshots/therundown.netlify.app_business_Cofax_20Coffee_20Shop_yhpzue.png)
-![Review Page](https://res.cloudinary.com/do6tcpizk/image/upload/v1589497473/GA%20Project%204%20Capstone%20Yelp%20Clone/Screenshots/therundown.netlify.app_business_Cofax_20Coffee_20Shop_1_sdqs7p.png)
+![Review Page](https://res.cloudinary.com/do6tcpizk/image/upload/v1589550692/GA%20Project%204%20Capstone%20Yelp%20Clone/Screenshots/therundown.netlify.app_business_Cofax_20Coffee_20Shop_writereview_o8pckj.png)
 ![Add Business](https://res.cloudinary.com/do6tcpizk/image/upload/v1589497473/GA%20Project%204%20Capstone%20Yelp%20Clone/Screenshots/therundown.netlify.app_business_Cofax_20Coffee_20Shop_2_r29u3v.png)
 
 
