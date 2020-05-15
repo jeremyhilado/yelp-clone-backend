@@ -103,11 +103,22 @@ MVP
 | Implement Favorites list | L | 4 hrs | 0 hrs | 0 hrs |
 | Total | | 43 hrs | 40 hrs | 40 hrs |
 
+## Technologies Used
+
+Backend: Python, Django, PostgreSQL
+
+Frontend: ReactJS, NodeJS
+
 ## Additional Libraries
+
 axios
 bootstrap
 react-bootstrap
 react-router-dom
+
+## Dependencies Installation
+
+npm i axios bootstrap cors react-bootstrap react-router
 
 ## Screenshots
 ![Home Page](https://res.cloudinary.com/do6tcpizk/image/upload/v1589497473/GA%20Project%204%20Capstone%20Yelp%20Clone/Screenshots/therundown.netlify.app__hlihhn.png)
@@ -124,18 +135,17 @@ react-router-dom
 I'm sharing the particular code snippent below because I thought it was a pretty clever way of getting the business id to the handle function so it can be stored in state. I set the value prop of the submit button to {business[0].id} so that when it was clicked it would get sent to the handleChange function and get stored into state.
 
 ```
-<textarea className="form-control" id="exampleFormControlTextarea1" rows="3" name="review" value={rundownContext.reviewInfo.review} onChange={rundownContext.handleReviewChange}></textarea>
-                    </div>
-                    <button type="submit" className="btn btn-info" name="business" value={business[0].id} onClick={rundownContext.handleReviewChange}>Post Review</button>
+<button type="submit" className="btn btn-info" name="business" value={business[0].id} onClick={rundownContext.handleReviewChange}>Post Review</button>
+
 ```
 
-
-
 ## Issues and Resolutions
-Spent too much time trying to replicate yelp's API exactly in Python and trying to match all the nesting and depths of data. Things got so convoluted I had to undo it all and settle for two simple models that were easy to work with.
+Spent too much time trying to replicate yelp's API exactly in Python and trying to match all the nesting and depths of data. I don't believe I had the proper understanding of how Django models work in Python so I just tried to apply what we were showed in class to accomplish that. I tried researching if there were other ways to go about it but I felt I was wasting time given the limited amount of time we had. Things got so convoluted I had to undo it all and settle for two simple models that were easy to work with.
 
 Could not figure out how to deploy backend with DEBUG=FALSE.
 
 Spent too much trying to figure out why I couldn't delete things when it ended up I was just missing a '/' at the end of my URL.
 
-Was researching how to get the value of radio buttons and couldn't find any satisfying answers but I was able to figure it out through trial and error on based on what I knew about getting the value of other types of inputs.
+Was researching how to get the value of radio buttons and couldn't find any satisfying answers but I was able to figure it out through trial and error based on what I knew about getting the value of other types of inputs. I knew I could store the value assigned to the "value" prop in state using the "name" prop as a reference with an onChange function for text inputs and dropdown boxes. I figured I should be able to do the exact same with radio buttons but using an onClick function instead and it worked perfectly.
+
+My app is still very buggy. The React architecture is not properly laid out. Components are not rerendering when I need them to. But through this project I have gained a much greater understanding of React and how components require a change in state or props to rerender. I plan on reworking all the code in this app to make sure that it functions properly so I can continue to add more features to it.
