@@ -4,7 +4,7 @@ The Rundown
 
 ## Project Description
 
-An app where users can create business listings and leave reviews about their experiences with them giving all other users "the rundown" on what those businesses are all about. Users are required to sign up for the website before being able to access the content. Once they sign up, they must log in. Once logged in, the users will have access to all of the business listings created by other users. The listings will contain business info as well as user generated reviews. The users can create new business listings that don't exist and be able to edit and delete those listings. Users can also leave reviews and be able to edit and delete those reviews. 
+An app where users can create business listings and leave reviews about their experiences with them giving all other users "the rundown" on what those businesses are all about. Users are required to sign up for the website before being able to access the content. Once they sign up, they must log in. Once logged in, the users will have access to all of the business listings created by other users. The listings will contain business info as well as user generated reviews. The users can create new business listings that don't exist and be able to edit and delete those listings. Users can also leave reviews and be able to edit and delete those reviews. Users will not be able to edit or delete businesses or reviews they they did not create themselves.
 
 For the next phase I plan on implementing a search functionality, favorites list, and being able to add other users as friends.
 
