@@ -5,6 +5,7 @@ from rest_framework.exceptions import (
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Business, Review
 from .serializers import BusinessSerializer, ReviewSerializer
+from django.contrib.postgres.search import SearchVector, SearchQuery
 
 
 class BusinessViewSet(viewsets.ModelViewSet):
@@ -112,3 +113,11 @@ class PublicReviewDetail(generics.RetrieveAPIView):
         return queryset
 
     serializer_class = ReviewSerializer
+
+
+class SearchDatabase(generics.ListAPIView):
+    def get_queryset(self):
+        search_term = self.request.GET.get('q',)
+        queryset = Business.objects.annotate(search=SearchVector('name', 'category', 'location_city', 'location_state', 'price',),).filter(search=search_term)
+        return queryset
+    serializer_class = BusinessSerializer
