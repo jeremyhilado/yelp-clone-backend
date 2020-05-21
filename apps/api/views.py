@@ -120,4 +120,5 @@ class SearchDatabase(generics.ListAPIView):
         search_term = self.request.GET.get('q',)
         queryset = Business.objects.annotate(search=SearchVector('name', 'category', 'location_city', 'location_state', 'price',),).filter(search=search_term)
         return queryset
+
     serializer_class = BusinessSerializer
