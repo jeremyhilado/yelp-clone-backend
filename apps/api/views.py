@@ -3,9 +3,9 @@ from rest_framework.exceptions import (
     ValidationError, PermissionDenied
 )
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import Business, Review
-from .serializers import BusinessSerializer, ReviewSerializer
-from django.contrib.postgres.search import SearchVector, SearchQuery
+from .models import Business, Review, Image
+from .serializers import BusinessSerializer, ReviewSerializer, ImageSerializer
+from django.contrib.postgres.search import SearchVector
 
 
 class BusinessViewSet(viewsets.ModelViewSet):
@@ -23,21 +23,21 @@ class BusinessViewSet(viewsets.ModelViewSet):
             owner=request.user
         )
         if business:
-            msg = 'Business with that name already exists'
+            msg = 'Business with that name already exists.'
             raise ValidationError(msg)
         return super().create(request)
 
     def destroy(self, request, *args, **kwargs):
         business = Business.objects.get(pk=self.kwargs["pk"])
         if not request.user == business.owner:
-            raise PermissionDenied("You do not have permission to delete this business")
+            raise PermissionDenied("You do not have permission to delete this business.")
         return super().destroy(request, *args, **kwargs)
 
     def update(self, request, *args, **kwargs):
         business = Business.objects.get(pk=self.kwargs["pk"])
         if not request.user == business.owner:
             raise PermissionDenied(
-                "You do not have permission to edit this business"
+                "You do not have permission to edit this business."
             )
         return super().update(request, *args, **kwargs)
 
@@ -80,14 +80,44 @@ class ReviewViewSet(viewsets.ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         review = Review.objects.get(pk=self.kwargs["pk"])
         if not request.user == review.owner:
-            raise PermissionDenied("You do not have permission to delete this album")
+            raise PermissionDenied("You do not have permission to delete this review.")
         return super().destroy(request, *args, **kwargs)
 
     def update(self, request, *args, **kwargs):
         review = Review.objects.get(pk=self.kwargs["pk"])
         if not request.user == review.owner:
             raise PermissionDenied(
-                "You do not have permission to edit this review"
+                "You do not have permission to edit this review."
+            )
+        return super().update(request, *args, **kwargs)
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
+class ImageViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        queryset = Review.objects.all()
+        return queryset
+
+    serializer_class = ImageSerializer
+
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+
+    def destroy(self, request, *args, **kwargs):
+        image = Image.objects.get(pk=self.kwargs["pk"])
+        if not request.user == image.owner:
+            raise PermissionDenied("You do not have permission to delete this image.")
+        return super().destory(request, *args, **kwargs)
+
+    def update(self, request, *args, **kwargs):
+        image = Image.objects.get(pk=self.kwargs["pk"])
+        if not request.user == image.owner:
+            raise PermissionDenied(
+                "You do not have permission to change this photo."
             )
         return super().update(request, *args, **kwargs)
 
@@ -118,7 +148,7 @@ class PublicReviewDetail(generics.RetrieveAPIView):
 class SearchDatabase(generics.ListAPIView):
     def get_queryset(self):
         search_term = self.request.GET.get('q',)
-        queryset = Business.objects.annotate(search=SearchVector('name', 'category', 'location_city', 'location_state', 'price',),).filter(search=search_term)
+        queryset = Business.objects.annotate(search=SearchVector('name', 'categories', 'location_city', 'location_state',),).filter(search=search_term)
         return queryset
 
     serializer_class = BusinessSerializer

@@ -90,7 +90,7 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'yelpclone',
+        'NAME': 'therundown',
         'USER': 'Jeremy',
         'PASSWORD': print(DB_PASSWORD),
         'HOST': 'localhost',

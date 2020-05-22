@@ -2,11 +2,12 @@ from django.conf.urls import url
 from rest_framework.routers import DefaultRouter
 from apps.api.views import (
     BusinessViewSet, ReviewViewSet, PublicBusinesses, PublicBusinessDetail,
-    PublicReviews, PublicReviewDetail, SearchDatabase
+    PublicReviews, PublicReviewDetail, SearchDatabase, ImageViewSet
 )
 router = DefaultRouter()
 router.register('businesses', BusinessViewSet, basename='businesses')
 router.register('reviews', ReviewViewSet, basename='reviews')
+router.register('images', ImageViewSet, basename='images')
 
 custom_urlpatterns = [
     url(r'public-businesses/$', PublicBusinesses.as_view(), name='public_businesses'),
