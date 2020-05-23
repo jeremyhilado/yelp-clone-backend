@@ -10,7 +10,7 @@ router.register('reviews', ReviewViewSet, basename='reviews')
 router.register('images', ImageViewSet, basename='images')
 
 custom_urlpatterns = [
-    url(r'items/(?P<pk>\d+)/$', BusinessEdit.as_view(), name='business-edit'),
+    url(r'businesses/(?P<pk>\d+)/$', BusinessEdit.as_view(), name='business-edit'),
     url(r'search/$', SearchDatabase.as_view(), name='search')
 ]
 
