@@ -98,3 +98,23 @@ class BusinessEdit(generics.RetrieveUpdateDestroyAPIView):
         return queryset
 
     serializer_class = BusinessSerializer
+
+
+class ReviewEdit(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        queryset = Review.objects.all().filter(owner=self.request.user)
+        return queryset
+
+    serializer_class = ReviewSerializer
+
+
+class ImageEdit(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        queryset = Image.objects.all().filter(owner=self.request.user)
+        return queryset
+
+    serializer_class = ImageSerializer
