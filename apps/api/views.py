@@ -63,7 +63,7 @@ class ImageViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        queryset = Review.objects.all()
+        queryset = Image.objects.all()
         return queryset
 
     serializer_class = ImageSerializer

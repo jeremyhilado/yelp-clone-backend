@@ -21,8 +21,8 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class BusinessSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    reviews = ReviewSerializer(many=True, read_only=True, required=False, source='business_review')
     images = ImageSerializer(many=True, read_only=True, required=False, source='business_image')
+    reviews = ReviewSerializer(many=True, read_only=True, required=False, source='business_review')
 
     class Meta:
         model = Business
